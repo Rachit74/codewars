@@ -12,36 +12,18 @@ Examples
 #include <vector>
 
 int FindOutlier(const std::vector<int> &arr) {
-    int odd_count = 0;
-    int even_count = 0;
-    int outlier = 0;
+    int even;
+    int odd;
 
-    // Count odd and even numbers
-    for (int num : arr) {
-        if (num % 2 == 0) {
-            even_count++;
-        } else {
-            odd_count++;
-        }
+    int evenCount = 0;
+    int oddCount = 0;
+
+    for (auto a: arr){
+        // condition ? if_true : if_false;
+        a % 2 == 0 ? (evenCount++, even=a) : (oddCount++, odd=a);
     }
 
-    if (odd_count > 1) {
-        for (int num : arr) {
-            if (num % 2 == 0) {
-                outlier = num;
-                break;
-            }
-        }
-    } else {
-        for (int num : arr) {
-            if (num % 2 != 0) {
-                outlier = num;
-                break;
-            }
-        }
-    }
-
-    return outlier;
+    return evenCount > oddCount ? odd : even;
 }
 
 
